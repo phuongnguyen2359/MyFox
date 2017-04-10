@@ -11,6 +11,15 @@ import Foundation
 enum MediaType : String {
     case Movie = "movies"
     case Series = "series"
+    
+    func cellIdentifier() -> String {
+        switch self {
+        case .Movie:
+            return String("MovieCell")
+        case .Series:
+            return String("SeriesCell")
+        }
+    }
 }
 
 protocol Media : Parsable {

@@ -22,7 +22,6 @@ class NetworkProvider {
                     observer.onCompleted()
                 case .failure(let error):
                     observer.onError(error)
-                    observer.onCompleted()
                 }
             })
             return Disposables.create {

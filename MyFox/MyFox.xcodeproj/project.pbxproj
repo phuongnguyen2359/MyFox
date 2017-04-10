@@ -22,6 +22,8 @@
 		2E1791D01E97DF1D00B98CDA /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1791CF1E97DF1D00B98CDA /* NetworkProvider.swift */; };
 		2E1791D21E97DF3400B98CDA /* CategoryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1791D11E97DF3400B98CDA /* CategoryProvider.swift */; };
 		2E1791D81E97DFCA00B98CDA /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1791D71E97DFCA00B98CDA /* HomeViewModel.swift */; };
+		2E6F58A91E9B972A0068CDE2 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F58A81E9B972A0068CDE2 /* BaseCell.swift */; };
+		2E6F58AB1E9B9E530068CDE2 /* MovieViewModelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F58AA1E9B9E530068CDE2 /* MovieViewModelCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,8 @@
 		2E1791CF1E97DF1D00B98CDA /* NetworkProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
 		2E1791D11E97DF3400B98CDA /* CategoryProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryProvider.swift; sourceTree = "<group>"; };
 		2E1791D71E97DFCA00B98CDA /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		2E6F58A81E9B972A0068CDE2 /* BaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
+		2E6F58AA1E9B9E530068CDE2 /* MovieViewModelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieViewModelCell.swift; sourceTree = "<group>"; };
 		81454BE446FAF1519204E86F /* Pods-MyFox.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFox.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyFox/Pods-MyFox.debug.xcconfig"; sourceTree = "<group>"; };
 		AAFEE1342A295911FA5820AA /* Pods_MyFox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE181C1F5BFB60E785684027 /* Pods-MyFox.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFox.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyFox/Pods-MyFox.release.xcconfig"; sourceTree = "<group>"; };
@@ -109,6 +113,7 @@
 				2E1791C61E97D9A300B98CDA /* Movie.swift */,
 				2E1791C81E97D9B100B98CDA /* Category.swift */,
 				2E1791CC1E97DA9200B98CDA /* Series.swift */,
+				2E6F58A81E9B972A0068CDE2 /* BaseCell.swift */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -126,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				2E1791D71E97DFCA00B98CDA /* HomeViewModel.swift */,
+				2E6F58AA1E9B9E530068CDE2 /* MovieViewModelCell.swift */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -276,6 +282,8 @@
 				2E1791C01E97CCB200B98CDA /* HomeViewController.swift in Sources */,
 				2E1791D21E97DF3400B98CDA /* CategoryProvider.swift in Sources */,
 				2E1791D01E97DF1D00B98CDA /* NetworkProvider.swift in Sources */,
+				2E6F58AB1E9B9E530068CDE2 /* MovieViewModelCell.swift in Sources */,
+				2E6F58A91E9B972A0068CDE2 /* BaseCell.swift in Sources */,
 				2E1791CD1E97DA9200B98CDA /* Series.swift in Sources */,
 				2E1791C51E97D99C00B98CDA /* Media.swift in Sources */,
 				2E1791C21E97CDD300B98CDA /* CategoryCell.swift in Sources */,

@@ -10,39 +10,38 @@ import UIKit
 import AFNetworking
 import RxSwift
 
-class CategoryCell: UITableViewCell {
-
+class NoContentCell: BaseCell {
+    
+}
+class CategoryCell: BaseCell {
+    
     @IBOutlet weak var collectionView: UICollectionView!
     var disposableBag = DisposeBag()
     
     @IBOutlet weak var noContent: UILabel!
     @IBOutlet weak var inDicator: UIActivityIndicatorView!
-   
     
-    var mediasObservable: Variable<[Media]> = Variable([])
-    var Medias: [Media] {
-        get {
-            return mediasObservable.value
+    var Medias: [Media] = []
+    override func loadData(withModel: Any) {
+        guard let cat = withModel as? Category else {
+            return
         }
-        set {
-            mediasObservable.value = newValue
+        if cat.mediaArray.count != 0 {
+            Medias = cat.mediaArray
+            collectionView.reloadData()
+        } else {
+            MovieViewModelCell.loadData(withModel: cat).subscribe(onNext: { media in
+                if let media = media {
+                    self.Medias = media
+                    cat.mediaArray = media
+                }
+                self.collectionView.reloadData()
+            }, onError: { error in
+                self.inDicator.stopAnimating()
+            }, onCompleted: {
+                self.inDicator.stopAnimating()
+            }).addDisposableTo(disposableBag)
         }
-    }
-    
-    func loadData(withCategory: Category) {
-
-        CategoryProvider().fetchMediaFor(category: withCategory).subscribe(onNext: { media in
-            if let media = media {
-                self.Medias = media
-            }
-            self.collectionView.reloadData()
-        }, onError: { (error) in
-            self.noContent.isHidden = self.Medias.count == 0 ? false : true
-            self.inDicator.stopAnimating()
-        }, onCompleted: {
-            self.noContent.isHidden = self.Medias.count == 0 ? false : true
-            self.inDicator.stopAnimating()
-        }).addDisposableTo(disposableBag)
     }
 }
 
@@ -61,13 +60,11 @@ extension CategoryCell : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "videoCell", for: indexPath) as? myCollViewCell {
-            self.mediasObservable.asObservable().subscribe(onNext: { media in
-                if let mediaPoster = media[indexPath.item].cover {
-                    collectionCell.poster.setImageWith(URL(string: mediaPoster)!)
-                }
-                    collectionCell.seriesTitle.text = media[indexPath.item].name
-                
-            }).addDisposableTo(disposableBag)
+            
+            if let mediaPoster = Medias[indexPath.item].cover {
+                collectionCell.poster.setImageWith(URL(string: mediaPoster)!)
+            }
+            collectionCell.seriesTitle.text = Medias[indexPath.item].name
             return collectionCell
         }
         return UICollectionViewCell()

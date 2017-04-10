@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 
 class HomeViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     var homeViewModel = HomeViewModel()
     var disposableBag = DisposeBag()
@@ -22,7 +22,7 @@ class HomeViewController: UIViewController {
         tableView.dataSource = self
         bindViewModel()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -34,7 +34,7 @@ class HomeViewController: UIViewController {
         }).addDisposableTo(disposableBag)
         homeViewModel.fetchHomePageContent()
     }
-
+    
 }
 
 extension HomeViewController: UITableViewDataSource {
@@ -43,8 +43,18 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CategoryCell
-        cell.loadData(withCategory: categoris[indexPath.row])
-        return cell
+        
+        let categoryObject = categoris[indexPath.row]
+        
+        guard let type = categoryObject.type else {
+            return tableView.dequeueReusableCell(withIdentifier: String(describing: NoContentCell.self)) ?? UITableViewCell()
+        }
+        
+        if let cell = tableView.dequeueReusableCell(withIdentifier: (type.cellIdentifier())) as? CategoryCell {
+            cell.loadData(withModel: categoryObject)
+            return cell
+        }
+        return UITableViewCell()
+        
     }
 }

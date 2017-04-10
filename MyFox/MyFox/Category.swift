@@ -13,7 +13,7 @@ class Category : Parsable {
     var name: String?
     var type: MediaType?
     var feed: String?
- //   var mediaArray: [Media] = []
+    var mediaArray: [Media] = []
     
     required init(dictionary: [String : AnyObject]) {
         self.name = dictionary["name"] as? String
@@ -21,6 +21,10 @@ class Category : Parsable {
         if let typeString = dictionary["type"] as? String {
             self.type = MediaType(rawValue: typeString)
         }
+    }
+    
+    init() {
+        
     }
 }
 
